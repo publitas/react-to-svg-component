@@ -1,0 +1,34 @@
+{
+  "name": "svg-to-react-component",
+  "version": "0.0.1",
+  "description": "Convert SVGs to React components",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/publitas/react-to-svg-component.git"
+  },
+  "keywords": [
+    "svg",
+    "react",
+    "webpack",
+    "browserify"
+  ],
+  "author": "Felix Hageloh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/publitas/react-to-svg-component/issues"
+  },
+  "homepage": "https://github.com/publitas/react-to-svg-component#readme",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-generator": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-traverse": "^6.26.0",
+    "svgo": "^1.0.3",
+    "uppercamelcase": "^3.0.0"
+  }
+}
