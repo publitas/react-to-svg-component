@@ -6,8 +6,6 @@ module.exports = function(src) {
   const cb = this.async();
   const name = upperCamelCase(path.basename(this.resourcePath, '.svg'));
   toComponent(String(src), name)
-    .then(c => {
-      cb(null, c)
-    })
+    .then(c => cb(null, c))
     .catch(err => cb(err));
 };
