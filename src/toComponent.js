@@ -10,7 +10,6 @@ function convert(renderFunction, name) {
     const React = require('react');
     function ${n}(props) {
       const newProps = Object.assign({}, props);
-      delete newProps.color;
       newProps.fill = (typeof props.color !== 'function') ? props.color : null;
       return ${renderFunction}(newProps);
     };
