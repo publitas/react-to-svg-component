@@ -8,7 +8,7 @@ function convert(renderFunction, name) {
   const n = name || 'Svg';
   return `
     const React = require('react');
-    module.exports = function ${n}(props) {
+    function ${n}(props) {
       const newProps = Object.assign({}, props);
       delete newProps.color;
       newProps.fill = (typeof props.color !== 'function') ? props.color : null;
@@ -18,5 +18,6 @@ function convert(renderFunction, name) {
       color: (_, original) => original,
       preserveAspectRatio: 'xMidYMid meet',
     };
+    module.exports = ${n};
   `;
 }
