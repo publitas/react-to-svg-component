@@ -62,7 +62,7 @@ function camelizeProps(node) {
   }
 }
 
-function removeHardcodedDimensions(node, parent, context) {
+function removeHardcodedDimensions(node, context) {
   if (isPropertyIdentifierWithNames(node, ['width', 'height'])) {
     context.remove();
   }
