@@ -14,7 +14,7 @@ function convert(renderFunction, name) {
       return ${renderFunction}(newProps);
     };
     ${n}.defaultProps = {
-      color: (_, original) => original,
+      color: function(_, original) { return original; },
       preserveAspectRatio: 'xMidYMid meet',
     };
     module.exports = ${n};
