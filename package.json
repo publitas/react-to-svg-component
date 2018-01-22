@@ -4,7 +4,7 @@
   "description": "Convert SVGs to React components",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "tap test/*.js"
   },
   "repository": {
     "type": "git",
@@ -25,10 +25,15 @@
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-generator": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-traverse": "^6.26.0",
     "svgo": "^1.0.3",
     "uppercamelcase": "^3.0.0"
+  },
+  "devDependencies": {
+    "tap": "^11.0.1",
+    "tapromise": "^1.1.2"
   }
 }

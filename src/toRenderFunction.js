@@ -54,10 +54,10 @@ function stripSvgArguments(svgString) {
 }
 
 function camelizeProps(node) {
-  if (node.type === 'Property' && node.key.type === 'Literal' ) {
+  if (node.type === 'ObjectProperty' && node.key.type === 'StringLiteral' ) {
     node.key = {
-      'type': 'Identifier',
-      'name': camelize(node.key.value)
+      type: 'Identifier',
+      name: camelize(node.key.value),
     };
   }
 }
@@ -99,7 +99,7 @@ function camelize(string) {
 }
 
 function isPropertyIdentifier(node) {
-  return node.type === 'Property' && node.key.type === 'Identifier';
+  return node.type === 'ObjectProperty' && node.key.type === 'Identifier';
 }
 
 function isPropertyIdentifierWithNames(node, names) {
