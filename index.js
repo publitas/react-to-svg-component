@@ -1,1 +1,1 @@
-module.exports = require('./src/toComponent');
+module.exports = require('./src/toReactComponent');

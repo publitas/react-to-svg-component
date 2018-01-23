@@ -1,26 +1,31 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function renderSvg(props) {
-
+function evalColor(type, color, colorProp) {
+  return typeof colorProp === 'function'
+    ? colorProp(type, color)
+    : colorProp;
 }
 
-export default function SvgComponent(props) {
+export default function COMPONENT_NAME(props) {
   const {color, ...rest} = props;
-  return renderSvg({
+  const svgProps = {
     ...rest,
-    fill: color !== 'function' ? color : undefined,
-  });
+    fill: typeof color !== 'function' ? color : undefined,
+  };
+  return (
+    JSX
+  );
 }
 
-Icon.propTypes = {
-  name: PropTypes.string.isRequired,
+COMPONENT_NAME.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   color: PropTypes.any,
   preserveAspectRatio: PropTypes.string,
 };
 
-Icon.defaultProps = {
+COMPONENT_NAME.defaultProps = {
   color: (_, original) => original,
   preserveAspectRatio: 'xMidYMid meet',
 };
