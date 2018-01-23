@@ -50,7 +50,7 @@ function stripSvgArguments(svgString) {
 
   return svgString
     // remove and parameterize all svg attributes except viewbox
-    .replace(/<svg([^>]*)*>/, '<svg {...props}'+viewBoxStr+'>');
+    .replace(/<svg([^>]*)*>/, '<svg {...props} '+viewBoxStr+' color={null}>');
 }
 
 function camelizeProps(node) {
