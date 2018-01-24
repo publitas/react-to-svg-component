@@ -5,14 +5,16 @@ const generate = require('babel-generator').default;
 const {transformFromAst} = require('babel-core');
 const upperCamelCase = require('uppercamelcase');
 const prettier = require('prettier');
-const template = require('fs').readFileSync(__dirname + '/template.js')
-  .toString();
 
-module.exports = function toReactComponent(svgString, name) {
-  return toJsx(svgString).then(jsx => wrap(jsx, name));
+module.exports = function toReactComponent(svgString, fileName) {
+  return Promise.all([
+    toJsx(svgString),
+    readTemplate(),
+  ])
+  .then(([jsx, template]) => wrap(jsx, template, fileName));
 };
 
-function wrap(jsx, fileName) {
+function wrap(jsx, template, fileName) {
   const ast = parse(template, {
     sourceType: 'module',
     plugins: ['objectRestSpread'],
@@ -38,4 +40,12 @@ const visit = (jsx, name) => (path) => {
 function componentName(fileName) {
   if (!fileName) return 'Svg';
   return upperCamelCase(require('path').basename(fileName, '.svg')) + 'Svg';
+}
+
+function readTemplate() {
+  return new Promise((resolve, reject) => {
+    require('fs').readFile(__dirname + '/template.js', 'utf8', (err, src) => {
+      err ? reject(err) : resolve(src);
+    });
+  });
 }
