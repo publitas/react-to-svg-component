@@ -37,7 +37,7 @@
     "uppercamelcase": "^3.0.0"
   },
   "devDependencies": {
-    "tap": "^11.0.1",
+    "tap": "^11.1.4",
     "tapromise": "^1.1.2"
   }
 }
