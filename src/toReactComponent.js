@@ -1,8 +1,8 @@
 const toJsx = require("./svgToJsx");
-const { parse } = require("babylon");
-const traverse = require("babel-traverse").default;
-const generate = require("babel-generator").default;
-const { transformFromAst } = require("babel-core");
+const { parse } = require("@babel/parser");
+const traverse = require("@babel/traverse").default;
+const generate = require("@babel/generator").default;
+const { transformFromAst } = require("@babel/core");
 const upperCamelCase = require("uppercamelcase");
 const prettier = require("prettier");
 
@@ -20,10 +20,10 @@ function wrap(jsx, template, fileName) {
   traverse(ast, { enter: visit(jsx, componentName(fileName)) });
   return transformFromAst(
     ast,
-    prettier.format(generate(ast).code, { parser: "babylon" }),
+    prettier.format(generate(ast).code, { parser: "babel" }),
     {
-      presets: ["env", "react"],
-      plugins: ["transform-object-rest-spread"],
+      presets: ["@babel/env", "@babel/react"],
+      plugins: ["@babel/plugin-proposal-object-rest-spread"],
       sourceMaps: true,
       sourceFileName: fileName
     }
