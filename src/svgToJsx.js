@@ -1,10 +1,6 @@
-
 const {parse} = require('babylon');
 const traverse = require('babel-traverse').default;
-const SVGO = require('svgo');
-var svg = new SVGO({plugins: [
-  {removeViewBox: false},
-]});
+const {optimize} = require('svgo');
 
 const isSvgElement = require('./isSvgElement');
 const addSpreadAttribute = require('./addSpreadAttribute');
@@ -12,7 +8,10 @@ const camelizeAttribute = require('./camelizeAttribute');
 const parameterizeColors = require('./parameterizeColors');
 
 module.exports = function svgToJsx(svgString) {
-  return svg.optimize(svgString).then(r => convert(r.data));
+  return new Promise((resolve) => {
+    const result = optimize(svgString);
+    resolve(convert(result.data));
+  });
 };
 
 function convert(jsxLikeSvg) {
@@ -29,7 +28,6 @@ function visit(path) {
   if (isSvgElement(path)) transformSvgElement(path);
 }
 
-
 function transformSvgElement(path) {
   addSpreadAttribute(path, 'svgProps');
 }
@@ -45,4 +43,3 @@ function transformJsxAttribute(path) {
     parameterizeColors(path);
   }
 }
-
