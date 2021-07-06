@@ -33,11 +33,11 @@
     "babylon": "^6.18.0",
     "camelcase": "^4.1.0",
     "prettier": "^1.15.3",
-    "svgo": "^1.0.3",
+    "svgo": "^2.3.1",
     "uppercamelcase": "^3.0.0"
   },
   "devDependencies": {
-    "tap": "^11.1.4",
+    "tap": "^15.0.9",
     "tapromise": "^1.1.2"
   }
 }
