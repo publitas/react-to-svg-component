@@ -5,5 +5,9 @@ module.exports = {
       name: "removeViewBox",
       active: false,
     },
+    {
+      name: "addClassesToSVGElement",
+      active: true,
+    },
   ]),
 };
