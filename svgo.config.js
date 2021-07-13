@@ -17,7 +17,6 @@ module.exports = {
     "removeUnknownsAndDefaults",
     "removeNonInheritableGroupAttrs",
     "removeUselessStrokeAndFill",
-    "removeDimensions",
     "cleanupEnableBackground",
     "removeHiddenElems",
     "removeEmptyText",
@@ -35,5 +34,6 @@ module.exports = {
     "sortDefsChildren",
     "removeTitle",
     "removeDesc",
+    "removeDimensions",
   ],
 };
