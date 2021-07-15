@@ -1,40 +1,43 @@
 const toJsx = require('../src/svgToJsx.js');
 const test = require('tap').test;
-const tapromise = require('tapromise');
-const fs = require('fs');
 const {transformFromAst} = require('babel-core');
 
-function testPromise(dec, f) {
-  return test(dec, t => f(tapromise(t)));
-}
+const toJSXString = (svgString) =>
+  transformFromAst(toJsx(svgString), true).code;
 
-test('it does stuff', t => {
-  const svg = fs.readFileSync(__dirname + '/files/svg-file.svg');
-  toJsx(svg.toString()).then(c => {
-    console.log(transformFromAst(c, true).code);
-    t.end();
-  });
+test('it removes hard coded fill colors', (t) => {
+  t.equal(
+    toJSXString('<svg><circle fill="#979797"></circle></svg>'),
+    "<svg {...svgProps}><circle fill={evalColor('fill', '#979797', props.color)} /></svg>;",
+  );
+  t.end();
 });
 
-// testPromise('it removes hard coded fill colors', t => {
-//   return t.match(
-//     toReact('<svg><circle fill="#979797"></circle></svg>'),
-//     /React.createElement\("circle", { fill: evalColor\("fill", "#979797"\) }\)/
-//   );
-// });
+test('it leaves the viewBox intact', (t) => {
+  t.equal(
+    toJSXString('<svg viewBox="0 0 16 16"><circle></circle></svg>'),
+    '<svg viewBox="0 0 16 16" {...svgProps}><circle /></svg>;',
+  );
+  t.end();
+});
 
-// testPromise('convert removes hard coded dimensions', t => {
-//   return t.match(
-//     toReact('<svg><circle width="2" height="3"></circle></svg>'),
-//     /React.createElement\("circle", null\)/
-//   );
-// });
+test('convert removes hard coded dimensions', (t) => {
+  t.equal(
+    toJSXString('<svg><circle width="2" height="3"></circle></svg>'),
+    '<svg {...svgProps}><circle /></svg>;',
+  );
 
-// testPromise('it camelizes props', t => {
-//   return t.match(
-//     toReact('<svg><circle fill-rule="even"></circle></svg>'),
-//     /React.createElement\("circle", { fillRule: "even" }\)/
-//   );
-// });
+  t.equal(
+    toJSXString('<svg width="2" height="3" foo="bar"><circle></circle></svg>'),
+    '<svg {...svgProps}><circle /></svg>;',
+  );
+  t.end();
+});
 
-
+test('it camelizes props', (t) => {
+  t.equal(
+    toJSXString('<svg><circle fill-rule="even"></circle></svg>'),
+    '<svg {...svgProps}><circle fillRule="even" /></svg>;',
+  );
+  t.end();
+});
