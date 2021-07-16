@@ -13,7 +13,7 @@ test('it removes hard coded fill colors', (t) => {
   t.end();
 });
 
-test('it leaves the viewBox intact', (t) => {
+test('it leaves the viewBox intact, even when width and height are set', (t) => {
   t.equal(
     toJSXString(
       '<svg viewBox="0 0 16 16" width="16px" height="16px"><circle></circle></svg>',
