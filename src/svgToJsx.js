@@ -1,6 +1,6 @@
 const {parse} = require('babylon');
 const traverse = require('babel-traverse').default;
-const {optimize, extendDefaultPlugins} = require('svgo');
+const {optimize} = require('svgo');
 
 const isSvgElement = require('./isSvgElement');
 const addSpreadAttribute = require('./addSpreadAttribute');
@@ -9,12 +9,16 @@ const parameterizeColors = require('./parameterizeColors');
 
 module.exports = function svgToJsx(svgString) {
   const result = optimize(svgString, {
-    plugins: extendDefaultPlugins([
+    plugins: [
       {
-        name: 'removeViewBox',
-        active: false,
+        name: 'preset-default',
+        params: {
+          overrides: {
+            removeViewBox: false,
+          },
+        },
       },
-    ]),
+    ],
   });
   return convert(result.data);
 };
