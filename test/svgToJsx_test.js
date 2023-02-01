@@ -1,6 +1,6 @@
 const toJsx = require('../src/svgToJsx.js');
 const test = require('tap').test;
-const {transformFromAst} = require('babel-core');
+const {transformFromAst} = require('@babel/core');
 
 const toJSXString = (svgString) =>
   transformFromAst(toJsx(svgString), true).code;

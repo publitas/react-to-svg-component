@@ -1,8 +1,8 @@
 const toJsx = require("./svgToJsx");
 const { parse } = require("babylon");
-const traverse = require("babel-traverse").default;
-const generate = require("babel-generator").default;
-const { transformFromAst } = require("babel-core");
+const traverse = require("@babel/traverse").default;
+const generate = require("@babel/generator").default;
+const { transformFromAst } = require("@babel/core");
 const upperCamelCase = require("uppercamelcase");
 const prettier = require("prettier");
 
