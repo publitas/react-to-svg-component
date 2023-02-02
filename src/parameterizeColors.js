@@ -1,5 +1,5 @@
 const colorAttrs = ['stroke', 'fill'];
-const {parseExpression} = require('babylon');
+const {parseExpression} = require('@babel/parser');
 const t = require('@babel/types');
 
 module.exports = function parameterizeColors(path) {
