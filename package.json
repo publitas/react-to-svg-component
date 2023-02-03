@@ -25,14 +25,14 @@
   "dependencies": {
     "@babel/core": "^7.0.0",
     "@babel/generator": "^7.0.0",
-    "@babel/parser": "^7.20.15",
-    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/parser": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/traverse": "^7.0.0",
     "@babel/types": "^7.0.0",
     "camelcase": "^4.1.0",
-    "prettier": "^1.15.3",
+    "prettier": "^1.19.1",
     "svgo": "^2.3.1",
     "uppercamelcase": "^3.0.0"
   },

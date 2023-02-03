@@ -22,7 +22,7 @@ function wrap(jsx, template, fileName) {
     ast,
     prettier.format(generate(ast).code, { parser: "@babel/parser" }),
     {
-      presets: ["env", "react"],
+      presets: ["@babel/preset-env", "@babel/preset-react"],
       plugins: ["@babel/plugin-proposal-object-rest-spread"],
       sourceMaps: true,
       sourceFileName: fileName
