@@ -32,7 +32,7 @@
     "@babel/traverse": "^7.0.0",
     "@babel/types": "^7.0.0",
     "camelcase": "^4.1.0",
-    "prettier": "^1.19.1",
+    "prettier": "^2.8.3",
     "svgo": "^2.3.1",
     "uppercamelcase": "^3.0.0"
   },

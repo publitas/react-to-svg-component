@@ -20,7 +20,7 @@ function wrap(jsx, template, fileName) {
   traverse(ast, { enter: visit(jsx, componentName(fileName)) });
   return transformFromAst(
     ast,
-    prettier.format(generate(ast).code, { parser: "@babel/parser" }),
+    prettier.format(generate(ast).code, { parser: "babel" }),
     {
       presets: ["@babel/preset-env", "@babel/preset-react"],
       plugins: ["@babel/plugin-proposal-object-rest-spread"],
