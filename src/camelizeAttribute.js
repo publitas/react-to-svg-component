@@ -1,5 +1,5 @@
 const camelCase = require('camelcase');
-const t = require('babel-types');
+const t = require('@babel/types');
 
 module.exports = function camelizeAttribute(path) {
   const name = camelCase(path.get('name').node.name);

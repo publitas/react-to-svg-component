@@ -1,5 +1,5 @@
-const {parse} = require('babylon');
-const traverse = require('babel-traverse').default;
+const {parse} = require('@babel/parser');
+const traverse = require('@babel/traverse').default;
 const {optimize} = require('svgo');
 
 const isSvgElement = require('./isSvgElement');
